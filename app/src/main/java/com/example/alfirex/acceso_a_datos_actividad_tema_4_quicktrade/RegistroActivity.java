@@ -1,6 +1,5 @@
 package com.example.alfirex.acceso_a_datos_actividad_tema_4_quicktrade;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +25,7 @@ public class RegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
 
         etEmail = (EditText) findViewById(R.id.etEmail);
-        etContrasenya = (EditText) findViewById(R.id.etEmail);
+        etContrasenya = (EditText) findViewById(R.id.etContraseña);
 
         final Button button = (Button) findViewById(R.id.btnRegistrarse);
         button.setOnClickListener(new View.OnClickListener() {
@@ -53,11 +52,12 @@ public class RegistroActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(RegistroActivity.this, "Authentication succesful." + user.getUid(),
                                     Toast.LENGTH_SHORT).show();
+                            mAuth.signOut();//para que se desconecte el ususario nos mas se registre
 
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(RegistroActivity.this, "Authentication failed.",
+                            Toast.makeText(RegistroActivity.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
 
                         }

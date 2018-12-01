@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QuickTrade"
+        android:layout_gravity="center_horizontal"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+
+        />
+
+
+
+    <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btnAcceder"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Acceder" />
+        <Button
+            android:id="@+id/btnAñadirProductos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Añadir Productos"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btnModificarlos"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Modificar Productos"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnBorrar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Borrar"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Buscar Producto"
+            android:layout_weight="1"/>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
