@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Acceso_A_Datos_Actividad_Tema_4_QuickTrade</string>
+
+    <!-- Nodos Firebase -->
+    <string name="nodo_usuarios">Usuarios</string>
+
+    <!-- Campos de los nodos -->
+    <string name="campo_usuario">usuario</string>
+    <string name="campo_nombre">nombre</string>
+    <string name="campo_apellidos">apellidos</string>
+    <string name="campo_correo">correo</string>
+    <string name="campo_contraseña">contraseña</string>
+    <string name="campo_direccion">direccion</string>
+
 </resources>

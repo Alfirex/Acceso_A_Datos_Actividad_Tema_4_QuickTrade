@@ -4,22 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
- >
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registro"
+        android:text="Perfil"
         android:layout_gravity="center_horizontal"
         android:textSize="30dp"
         android:layout_marginTop="10dp"
-        />
-    <EditText
-        android:id="@+id/etUsuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Usuario"
-        android:inputType="textPersonName"
         />
     <EditText
         android:id="@+id/etNombre"
@@ -28,7 +20,6 @@
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
-
         />
     <EditText
         android:id="@+id/etApellidos"
@@ -46,26 +37,11 @@
         android:hint="Direccion"
         android:inputType="textPersonName"
         />
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="E-mail"
-        android:inputType="textPersonName"
-        />
 
-    <EditText
-        android:id="@+id/etContraseña"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword" />
     <Button
-        android:id="@+id/btnRegistrarse"
+        android:id="@+id/btnModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Registrarse" />
+        android:text="Modificar Informacion" />
 </LinearLayout>
