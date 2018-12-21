@@ -3,7 +3,7 @@
 
     <!-- Nodos Firebase -->
     <string name="nodo_usuarios">Usuarios</string>
-
+    <string name="nodo_producto">productos</string>
     <!-- Campos de los nodos -->
     <string name="campo_usuario">usuario</string>
     <string name="campo_nombre">nombre</string>

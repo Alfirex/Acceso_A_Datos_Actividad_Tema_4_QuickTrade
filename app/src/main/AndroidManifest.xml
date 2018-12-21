@@ -18,7 +18,11 @@
         </activity>
         <activity android:name=".RegistroActivity" />
         <activity android:name=".DiversasAccionesActivity" />
-        <activity android:name=".PerfilActivity"></activity>
+        <activity android:name=".PerfilActivity" />
+        <activity android:name=".addProductoActivity" />
+        <activity android:name=".modificarProductoActivity" />
+        <activity android:name=".BorrarProductoActivity" />
+        <activity android:name=".BusquedaPorCategoriaActivity"></activity>
     </application>
 
 </manifest>

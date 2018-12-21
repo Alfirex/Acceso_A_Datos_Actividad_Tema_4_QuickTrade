@@ -20,6 +20,38 @@ public class DiversasAccionesActivity extends AppCompatActivity {
                 startActivity(iActivityPerfil);
             }
         });
+
+        final Button btnAddProducto= (Button) findViewById(R.id.btnAñadirProductos);
+        btnAddProducto.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent iActivityAñadirProducto = new Intent(v.getContext(), addProductoActivity.class);
+                startActivity(iActivityAñadirProducto);
+            }
+        });
+
+        final Button btnModificarProducto= (Button) findViewById(R.id.btnModificarlos);
+        btnModificarProducto.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent iActivityModificarProducto = new Intent(v.getContext(), modificarProductoActivity.class);
+                startActivity(iActivityModificarProducto);
+            }
+        });
+
+        final Button btnBorrarProducto= (Button) findViewById(R.id.btnBorrar);
+        btnBorrarProducto.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent iActivityBorrarProducto = new Intent(v.getContext(), BorrarProductoActivity.class);
+                startActivity(iActivityBorrarProducto);
+            }
+        });
+
+        final Button btnBusquedaPorCategoriaProducto= (Button) findViewById(R.id.btnBusquedaCategoria);
+        btnBusquedaPorCategoriaProducto.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent iActivityBorrarProducto = new Intent(v.getContext(), BusquedaPorCategoriaActivity.class);
+                startActivity(iActivityBorrarProducto);
+            }
+        });
     }
 
 

@@ -44,7 +44,7 @@ public class RegistroActivity extends AppCompatActivity {
         etEmail = (EditText) findViewById(R.id.etEmail);
         etContrasenya = (EditText) findViewById(R.id.etContraseña);
 
-        // Cogemos la referencia del Nodo de Firebase
+        // Cogemos la referencia del Nodo de Firebase || R.string.nodo_usuarios su valor es "Usuarios"
         bbdd = FirebaseDatabase.getInstance().getReference( getString(R.string.nodo_usuarios) );
 
 
