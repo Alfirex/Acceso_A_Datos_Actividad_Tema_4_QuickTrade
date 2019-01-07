@@ -4,11 +4,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.alfirex.acceso_a_datos_actividad_tema_4_quicktrade.model.Producto;
@@ -23,23 +21,23 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class BorrarProductoActivity extends AppCompatActivity {
 
-    Spinner spin_group;
+    Spinner spin_group_producto;
     private String idUsuario;
-    DatabaseReference bbdd,bbdd2;
-    private ArrayList<Usuario> listado = new ArrayList<Usuario>();
-    private ArrayList<String> listado2 = new ArrayList<String>();
+    DatabaseReference bbdd, bbdd2;
+    private ArrayList<Usuario> listadoUsuario = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrar_producto);
+
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();// Obtenemos el valor del usuario logueado
-        spin_group = (Spinner) findViewById(R.id.spinner);
+        spin_group_producto =  findViewById(R.id.spinner);
 
         // Cogemos la referencia del Nodo de Firebase
         bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));
@@ -60,16 +58,13 @@ public class BorrarProductoActivity extends AppCompatActivity {
                     String userid = oUsuario.getIduser();
 
                     // Añadimos toda al ArrayLiadaptadorst la informacion de cada Usuario
-                    listado.add(new Usuario(usuario, correo, nombre, apellido, contrasenya, sDireccion, userid));
+                    listadoUsuario.add(new Usuario(usuario, correo, nombre, apellido, contrasenya, sDireccion, userid));
                 }
                 // Iteramos el ArrayList para mostrar la informacion de cada objeto
-                Iterator<Usuario> nombreIterator = listado.iterator();
-                while (nombreIterator.hasNext()) {
-                    Usuario elemento = nombreIterator.next();
+                for (Usuario elemento : listadoUsuario) {
                     // En el IF comprovamos de que el user logueado actualmente coincide con el que este en el ArrayList, y si esta que almacene/sette el texto de los valores
                     if (elemento.getIduser().compareTo(user.getUid()) == 0) {
-                        // obtenemos el Usuario loqueado
-                        idUsuario = elemento.getUsuario();
+                        idUsuario = elemento.getUsuario();// obtenemos el Usuario loqueado
                     }
                 }
                 bbdd2 = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_producto));//Obtenemos el Nodo Prodcuto
@@ -79,20 +74,20 @@ public class BorrarProductoActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
 
                         ArrayAdapter<String> adaptador;
-                        ArrayList<String> listado = new ArrayList<String>();
+                        ArrayList<String> listadoOptions = new ArrayList<>();
 
 
                         for (DataSnapshot datasnapshot : dataSnapshot.getChildren()) {
                             Producto oProducto = datasnapshot.getValue(Producto.class);
-                            String nombre = oProducto.getNombre();
-                            String usuario = oProducto.getUsuario();
+                            String sNombre = oProducto.getNombre();
+                            String sUsuario = oProducto.getUsuario();
 
-                            if (usuario.equals(idUsuario)){
-                                listado.add(nombre);
+                            if (sUsuario.equals(idUsuario)){
+                                listadoOptions.add(sNombre);
                             }
                         }
-                        adaptador = new ArrayAdapter<>(BorrarProductoActivity.this,android.R.layout.simple_list_item_1,listado);
-                        spin_group.setAdapter(adaptador);
+                        adaptador = new ArrayAdapter<>(BorrarProductoActivity.this,android.R.layout.simple_list_item_1,listadoOptions);
+                        spin_group_producto.setAdapter(adaptador);
 
                     }
 
@@ -111,27 +106,25 @@ public class BorrarProductoActivity extends AppCompatActivity {
         /**
          * Borramos el elemento
          */
-        final Button btnBorrar = (Button) findViewById(R.id.btnBorrarPROD);
+        final Button btnBorrar = findViewById(R.id.btnBorrarPROD);// Obtenemos la referencia el boton Eliminar
         btnBorrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Optenemos los 3 valores de los editText
-                final String sNombre = spin_group.getSelectedItem().toString();
+                // Optenemos el Valor seleccionado del Spiner
+                final String sNombre = spin_group_producto.getSelectedItem().toString();
 
                 // Hacemos una comprobacion sobre el si los campos no estan vacios
                 if (!TextUtils.isEmpty(sNombre) ){
 
-                    // Hacemos una Busqueda por nombre del Usuario
-                    Query q=bbdd2.orderByChild("nombre").equalTo(sNombre);
+                    Query q = bbdd2.orderByChild("nombre").equalTo(sNombre); // Hacemos una Busqueda por nombre del Usuario
                     q.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             for(DataSnapshot datasnapshot: dataSnapshot.getChildren()){
                                 // clave obtiene el id de la fila del JSON
-                                String clave =  datasnapshot.getKey();
+                                String clave =  datasnapshot.getKey(); // obtenemos la clave de la referencia
 
-                                DatabaseReference ref = bbdd2.child(clave);
-                                ref.removeValue();
-
+                                DatabaseReference ref = bbdd2.child(clave);// Pillamos la referencia
+                                ref.removeValue();// Eliminamos
                             }
                         }
 

@@ -19,18 +19,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class addProductoActivity extends AppCompatActivity {
-    EditText etNombre, etDescripcion, etCategoria, etPrecio;
+    EditText etNombre, etDescripcion, etPrecio;
     private String idUsuario;
     DatabaseReference bbdd,bbdd2;
-    private ArrayList<Usuario> listado = new ArrayList<Usuario>();
-    private ArrayList<String> listado2 = new ArrayList<String>();
+    private ArrayList<Usuario> listado = new ArrayList<>();
+    private ArrayList<String> listadoOptions = new ArrayList<>();
     Spinner spin_group_categorias;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +37,21 @@ public class addProductoActivity extends AppCompatActivity {
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();// Obtenemos el valor del usuario logueado
-        etNombre = (EditText) findViewById(R.id.etNombre);
-        etDescripcion = (EditText) findViewById(R.id.etDescripcion);
-        spin_group_categorias = (Spinner) findViewById(R.id.spinnerCategoria);
-        etPrecio = (EditText) findViewById(R.id.etPrecio);
+
+        etNombre =  findViewById(R.id.etNombre);
+        etDescripcion =  findViewById(R.id.etDescripcion);
+        spin_group_categorias =  findViewById(R.id.spinnerCategoria);
+        etPrecio =  findViewById(R.id.etPrecio);
 
         ArrayAdapter<String> adaptador;
-        listado2.add("tecnologıa");
-        listado2.add("coches");
-        listado2.add("hogar");
-        adaptador = new ArrayAdapter<>(addProductoActivity.this,android.R.layout.simple_list_item_1,listado2);
-        spin_group_categorias.setAdapter(adaptador);
+        listadoOptions.add("tecnologıa");
+        listadoOptions.add("coches");
+        listadoOptions.add("hogar");
 
-        // Cogemos la referencia del Nodo de Firebase
-        bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));
+        adaptador = new ArrayAdapter<>(addProductoActivity.this,android.R.layout.simple_list_item_1, listadoOptions);
+        spin_group_categorias.setAdapter(adaptador); // Llenamos los options del Select
+
+        bbdd = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_usuarios));// Cogemos la referencia del Nodo de Firebase
 
         bbdd.addValueEventListener(new ValueEventListener() {
             @Override
@@ -69,14 +68,11 @@ public class addProductoActivity extends AppCompatActivity {
                     String sDireccion = oUsuario.getDireccion();
                     String userid = oUsuario.getIduser();
 
-                    // Añadimos toda al ArrayList la informacion de cada Usuario
-                    listado.add(new Usuario(usuario, correo, nombre, apellido, contrasenya, sDireccion, userid));
+
+                    listado.add(new Usuario(usuario, correo, nombre, apellido, contrasenya, sDireccion, userid));  // Añadimos toda al ArrayList la informacion de cada Usuario
                 }
                 // Iteramos el ArrayList para mostrar la informacion de cada objeto
-                Iterator<Usuario> nombreIterator = listado.iterator();
-                while (nombreIterator.hasNext()) {
-                    Usuario elemento = nombreIterator.next();
-
+                for (Usuario elemento : listado) {
                     // En el IF comprovamos de que el user logueado actualmente coincide con el que este en el ArrayList, y si esta que almacene/sette el texto de los valores
                     if (elemento.getIduser().compareTo(user.getUid()) == 0) {
                         idUsuario = elemento.getUsuario();// Almacenamos el nombre de Usuario del ArrayList
@@ -90,7 +86,7 @@ public class addProductoActivity extends AppCompatActivity {
 
             }
         });
-        final Button btnAñadir = (Button) findViewById(R.id.btnAñadir);
+        final Button btnAñadir = findViewById(R.id.btnAñadir);
         btnAñadir.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Optenemos los 3 valores de los editText
@@ -108,7 +104,7 @@ public class addProductoActivity extends AppCompatActivity {
 
                     String clave = bbdd2.push().getKey();//Generamos una clave para el Nodo
 
-                    bbdd2.child(clave).setValue(oProducto);// Insetarmaos el Producto en la clave que hemos creado
+                    bbdd2.child(clave).setValue(oProducto);// Insertamaos el Producto en la clave que hemos creado
 
                     Toast.makeText(addProductoActivity.this, "Se ha añadido el Producto." ,
                             Toast.LENGTH_SHORT).show();

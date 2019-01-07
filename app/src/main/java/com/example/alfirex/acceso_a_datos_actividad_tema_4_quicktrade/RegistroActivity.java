@@ -3,9 +3,7 @@ package com.example.alfirex.acceso_a_datos_actividad_tema_4_quicktrade;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,12 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
 public class RegistroActivity extends AppCompatActivity {
     EditText etUsuario, etNombre,etApellidos, etEmail,etContrasenya, etDireccion;
     private FirebaseAuth mAuth;
-    private ArrayList<String> listado = new ArrayList<String>();
     private  int cont = 0;
     DatabaseReference bbdd;
 
@@ -37,43 +32,22 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        etUsuario = (EditText) findViewById(R.id.etUsuario);
-        etNombre = (EditText) findViewById(R.id.etNombre);
-        etApellidos = (EditText) findViewById(R.id.etApellidos);
-        etDireccion= (EditText) findViewById(R.id.etDireccion);
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etContrasenya = (EditText) findViewById(R.id.etContraseña);
+        // Obtenemos las Referencias de los EditText
+        etUsuario =  findViewById(R.id.etUsuario);
+        etNombre =  findViewById(R.id.etNombre);
+        etApellidos =  findViewById(R.id.etApellidos);
+        etDireccion =  findViewById(R.id.etDireccion);
+        etEmail =  findViewById(R.id.etEmail);
+        etContrasenya =  findViewById(R.id.etContraseña);
 
         // Cogemos la referencia del Nodo de Firebase || R.string.nodo_usuarios su valor es "Usuarios"
         bbdd = FirebaseDatabase.getInstance().getReference( getString(R.string.nodo_usuarios) );
 
-
-//        bbdd.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                for(DataSnapshot datasnapshot : dataSnapshot.getChildren()){
-//                    Usuario oUsuario = datasnapshot.getValue(Usuario.class);
-//
-//                    String usuario = oUsuario.getUsuario();
-//                    //Log.d("Prueba", String.valueOf(usuario));
-//                    listado.add(usuario);
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
-        final Button button = (Button) findViewById(R.id.btnRegistrarse);
+        final Button button =  findViewById(R.id.btnRegistrarse); // Obtenemos La referencia del Boton
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                // Obtenemos los valores de los EditText
                 final String sUsuario = etUsuario.getText().toString();
                 final String sNombre = etNombre.getText().toString();
                 final String sApellido = etApellidos.getText().toString();
@@ -91,7 +65,7 @@ public class RegistroActivity extends AppCompatActivity {
                         }
                         if (cont == 0){ // Si la variable contador sigue sindo 0 es que no ha encontrado un usuario con el mismo nombre
                             // Registramos Usuario
-                            registrar(sUsuario,sNombre,sApellido,sEmail, sContrasenya,sDireccion);
+                            registrar(sUsuario, sNombre, sApellido, sEmail, sContrasenya, sDireccion);
                         }else{ // Ha encontrado un usuario con el mismo nombre
                             cont = 0;// Reiniciamos la variable ha 0  para que  si insertamos varios usuarios compruebe de nuevo
                             Toast.makeText(RegistroActivity.this, "El Usuario Insertado Ya Existe." ,

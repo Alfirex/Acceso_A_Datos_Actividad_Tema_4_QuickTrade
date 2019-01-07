@@ -13,15 +13,16 @@ public class DiversasAccionesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diversas_acciones);
 
-        final Button btnAcceder = (Button) findViewById(R.id.btnPerfil);
-        btnAcceder.setOnClickListener(new View.OnClickListener() {
+        // Boton que nos enviara al Perfil
+        final Button btnPerfil =  findViewById(R.id.btnPerfil);
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent iActivityPerfil = new Intent(v.getContext(), PerfilActivity.class);
                 startActivity(iActivityPerfil);
             }
         });
 
-        final Button btnAddProducto= (Button) findViewById(R.id.btnAñadirProductos);
+        final Button btnAddProducto =  findViewById(R.id.btnAñadirProductos);
         btnAddProducto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent iActivityAñadirProducto = new Intent(v.getContext(), addProductoActivity.class);
@@ -29,7 +30,7 @@ public class DiversasAccionesActivity extends AppCompatActivity {
             }
         });
 
-        final Button btnModificarProducto= (Button) findViewById(R.id.btnModificarlos);
+        final Button btnModificarProducto =  findViewById(R.id.btnModificarlos);
         btnModificarProducto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent iActivityModificarProducto = new Intent(v.getContext(), modificarProductoActivity.class);
@@ -37,7 +38,7 @@ public class DiversasAccionesActivity extends AppCompatActivity {
             }
         });
 
-        final Button btnBorrarProducto= (Button) findViewById(R.id.btnBorrar);
+        final Button btnBorrarProducto =  findViewById(R.id.btnBorrar);
         btnBorrarProducto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent iActivityBorrarProducto = new Intent(v.getContext(), BorrarProductoActivity.class);
@@ -45,11 +46,19 @@ public class DiversasAccionesActivity extends AppCompatActivity {
             }
         });
 
-        final Button btnBusquedaPorCategoriaProducto= (Button) findViewById(R.id.btnBusquedaCategoria);
+        final Button btnBusquedaPorCategoriaProducto =  findViewById(R.id.btnBusquedaCategoria);
         btnBusquedaPorCategoriaProducto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent iActivityBorrarProducto = new Intent(v.getContext(), BusquedaPorCategoriaActivity.class);
-                startActivity(iActivityBorrarProducto);
+                Intent iActivityBusquedaCategoriaProducto = new Intent(v.getContext(), BusquedaPorCategoriaActivity.class);
+                startActivity(iActivityBusquedaCategoriaProducto);
+            }
+        });
+
+        final Button btnBusquedaProdUsuario =  findViewById(R.id.btnBuscarProdUsser);
+        btnBusquedaProdUsuario.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent iActivityBusquedaUsuarioProducto = new Intent(v.getContext(), BusquedaProdUserActivity.class);
+                startActivity(iActivityBusquedaUsuarioProducto);
             }
         });
     }

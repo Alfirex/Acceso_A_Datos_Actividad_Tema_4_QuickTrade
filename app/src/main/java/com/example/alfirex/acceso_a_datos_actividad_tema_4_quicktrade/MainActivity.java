@@ -18,29 +18,28 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
-    private View v;
     private FirebaseAuth mAuth;
-    EditText etEmail,etContrasenya;
+    EditText etEmail, etContrasenya;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etContrasenya = (EditText) findViewById(R.id.etContraseña);
+        etEmail =  findViewById(R.id.etEmail);
+        etContrasenya =  findViewById(R.id.etContraseña);
 
-        final Button btnAcceder = (Button) findViewById(R.id.btnAcceder);
+        final Button btnAcceder =  findViewById(R.id.btnAcceder);
         btnAcceder.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String sEmail = etEmail.getText().toString();
                 String sContrasenya= etContrasenya.getText().toString();
-                login(sEmail, sContrasenya);
 
+                login(sEmail, sContrasenya);// Vamos a la funcion de login para hacer las comprobaciones de que si existe en Firebase
             }
         });
 
-        final Button btnRegistrarse = (Button) findViewById(R.id.btnRegistrarse);
+        final Button btnRegistrarse =  findViewById(R.id.btnRegistrarse);
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent iRegistro = new Intent(v.getContext(), RegistroActivity.class);
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                            // Iniciar sesión correctamente, actualizar la interfaz de usuario con la información del usuario registrado
 
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(MainActivity.this, "Authentication succesful." + user.getUid(),
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(iDiversasAcciones);
 
                         } else {
-                            // If sign in fails, display a message to the user.
+                            // Si falla el inicio de sesión, muestre un mensaje al usuario.
                             Toast.makeText(MainActivity.this, "Authentication failed." + task.getException(),
                                     Toast.LENGTH_SHORT).show();
 

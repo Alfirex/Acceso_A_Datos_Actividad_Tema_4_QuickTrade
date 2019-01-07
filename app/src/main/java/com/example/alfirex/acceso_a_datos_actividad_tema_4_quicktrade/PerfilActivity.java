@@ -20,13 +20,13 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class PerfilActivity extends AppCompatActivity {
-    EditText etNombre,etApellidos, etDireccion;
+    EditText etNombre, etApellidos, etDireccion;
     private String  idUsuario;
     DatabaseReference bbdd;
-    private ArrayList<Usuario> listado = new ArrayList<Usuario>();
+    private ArrayList<Usuario> listado = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +34,15 @@ public class PerfilActivity extends AppCompatActivity {
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();// Obtenemos el valor del usuario logueado
-        etNombre = (EditText) findViewById(R.id.etNombre);
-        etApellidos = (EditText) findViewById(R.id.etApellidos);
-        etDireccion= (EditText) findViewById(R.id.etDireccion);
+        etNombre =  findViewById(R.id.etNombre);
+        etApellidos =  findViewById(R.id.etApellidos);
+        etDireccion =  findViewById(R.id.etDireccion);
 
         // Cogemos la referencia del Nodo de Firebase
         bbdd = FirebaseDatabase.getInstance().getReference( getString(R.string.nodo_usuarios) );
-
+        /**
+         * Obtenemos la informacion del Usuario Logueado
+         */
         bbdd.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -56,24 +58,20 @@ public class PerfilActivity extends AppCompatActivity {
                     String sDireccion = oUsuario.getDireccion();
                     String userid = oUsuario.getIduser();
 
-                    // Añadimos toda al ArrayList la informacion de cada Usuario
-                    listado.add(new Usuario(usuario, correo, nombre, apellido, contrasenya, sDireccion, userid));
+                    listado.add(new Usuario(usuario, correo, nombre, apellido, contrasenya, sDireccion, userid));// Añadimos toda al ArrayList la informacion de cada Usuario
                 }
                 // Iteramos el ArrayList para mostrar la informacion de cada objeto
-                Iterator<Usuario> nombreIterator = listado.iterator();
-                while(nombreIterator.hasNext()){
-                    Usuario elemento = nombreIterator.next();
-
+                for (Usuario elemento : listado) {
                     // En el IF comprovamos de que el user logueado actualmente coincide con el que este en el ArrayList, y si esta que almacene/sette el texto de los valores
-                    if (elemento.getIduser().compareTo( user.getUid() )== 0) {
+                    if (elemento.getIduser().compareTo(user.getUid()) == 0) {
                         idUsuario = elemento.getUsuario();// Almacenamos el nombre de Usuario del ArrayList
+
                         // Setteamos los edtext con la informacion del Usuario Actual
                         etNombre.setText(elemento.getNombre());
                         etDireccion.setText(elemento.getDireccion());
                         etApellidos.setText(elemento.getApellidos());
                     }
                 }
-
             }
 
             @Override
@@ -82,7 +80,10 @@ public class PerfilActivity extends AppCompatActivity {
             }
         });
 
-        final Button btnModificar = (Button) findViewById(R.id.btnModificar);
+        /**
+         * Modificamos
+         */
+        final Button btnModificar =  findViewById(R.id.btnModificar);
         btnModificar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Optenemos los 3 valores de los editText
@@ -100,6 +101,7 @@ public class PerfilActivity extends AppCompatActivity {
                             for(DataSnapshot datasnapshot: dataSnapshot.getChildren()){
                                 // clave obtiene el id de la fila del JSON
                                 String clave =  datasnapshot.getKey();
+
                                 // En las 3 siguientes lineas lo que hacemos es Cambiar los valores del JSON
                                 bbdd.child(clave).child(getString(R.string.campo_nombre)).setValue(sNombre);
                                 bbdd.child(clave).child(getString(R.string.campo_apellidos)).setValue(sApellidos);
