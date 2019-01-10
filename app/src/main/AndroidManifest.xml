@@ -22,7 +22,8 @@
         <activity android:name=".addProductoActivity" />
         <activity android:name=".modificarProductoActivity" />
         <activity android:name=".BorrarProductoActivity" />
-        <activity android:name=".BusquedaPorCategoriaActivity"></activity>
+        <activity android:name=".BusquedaPorCategoriaActivity" />
+        <activity android:name=".BusquedaProdUserActivity2"></activity>
     </application>
 
 </manifest>

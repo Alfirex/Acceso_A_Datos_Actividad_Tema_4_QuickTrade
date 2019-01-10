@@ -19,17 +19,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class BusquedaProdUserActivity extends AppCompatActivity {
+public class BusquedaProdUserActivity2 extends AppCompatActivity {
     Spinner spin_group_user;
     DatabaseReference bbdd, bbdd2;
     private ArrayList<String> listado = new ArrayList<>();
     ListView lv;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_busqueda_prod_user);
-
+        setContentView(R.layout.activity_busqueda_prod_user2);
         spin_group_user =  findViewById(R.id.spinner_usuario);
         lv =  findViewById(R.id.listviewUsu) ;
 
@@ -48,7 +46,7 @@ public class BusquedaProdUserActivity extends AppCompatActivity {
                     ArrayAdapter<String> adaptador;
                     listado.add(usuario);// Añadimos al ArrayList la usuario
 
-                    adaptador = new ArrayAdapter<>(BusquedaProdUserActivity.this,android.R.layout.simple_list_item_1,listado);
+                    adaptador = new ArrayAdapter<>(BusquedaProdUserActivity2.this,android.R.layout.simple_list_item_1,listado);
                     spin_group_user.setAdapter(adaptador);// Adaptamos para que visualize el Select con sus opciones
                 }
 
@@ -92,7 +90,7 @@ public class BusquedaProdUserActivity extends AppCompatActivity {
                                 listadoString.add(elemento.toString());// Añadimos el producto ArrayList
                             }
                         }
-                        adaptador = new ArrayAdapter<>(BusquedaProdUserActivity.this,android.R.layout.simple_list_item_1,listadoString);
+                        adaptador = new ArrayAdapter<>(BusquedaProdUserActivity2.this,android.R.layout.simple_list_item_1,listadoString);
                         lv.setAdapter(adaptador);
 
                     }
@@ -104,6 +102,5 @@ public class BusquedaProdUserActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 }

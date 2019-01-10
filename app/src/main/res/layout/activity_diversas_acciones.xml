@@ -75,7 +75,7 @@
         android:layout_marginTop="5dp"
         android:layout_weight="1">
         <Button
-            android:id="@+id/btnBuscar"
+            android:id="@+id/btnBuscarProdUsser"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="Buscar Producto"

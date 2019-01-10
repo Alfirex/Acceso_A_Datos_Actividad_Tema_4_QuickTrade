@@ -57,7 +57,7 @@ public class DiversasAccionesActivity extends AppCompatActivity {
         final Button btnBusquedaProdUsuario =  findViewById(R.id.btnBuscarProdUsser);
         btnBusquedaProdUsuario.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent iActivityBusquedaUsuarioProducto = new Intent(v.getContext(), BusquedaProdUserActivity.class);
+                Intent iActivityBusquedaUsuarioProducto = new Intent(v.getContext(), BusquedaProdUserActivity2.class);
                 startActivity(iActivityBusquedaUsuarioProducto);
             }
         });
