@@ -24,6 +24,7 @@
         <activity android:name=".BorrarProductoActivity" />
         <activity android:name=".BusquedaPorCategoriaActivity" />
         <activity android:name=".BusquedaProdUserActivity2" />
+
         <activity android:name=".FavoritoActivity" />
         <activity android:name=".MostrarFavActivity"></activity>
     </application>

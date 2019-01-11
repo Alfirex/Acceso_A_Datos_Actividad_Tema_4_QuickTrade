@@ -103,6 +103,13 @@
             android:layout_height="match_parent"
             android:text="Mostrar Mis Favoritos"
             android:layout_weight="1"/>
+        <!--Ampliacion Tus Categorias-->
+        <Button
+            android:id="@+id/btnTusCategorias"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Tus Categorias"
+            android:layout_weight="1"/>
 
 
 
