@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.alfirex.acceso_a_datos_actividad_tema_4_quicktrade.model.Producto;
+import com.example.alfirex.acceso_a_datos_actividad_tema_4_quicktrade.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +24,12 @@ import java.util.ArrayList;
 public class BusquedaPorCategoriaActivity extends AppCompatActivity {
     Spinner spin_group_categorias;
     private ArrayList<String> listado2 = new ArrayList<>();
-    DatabaseReference bbdd;
+    DatabaseReference bbdd,bbdd2;
     ListView lv;
+
+
+
+    private ArrayList<Usuario> listadoUsuario = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +52,6 @@ public class BusquedaPorCategoriaActivity extends AppCompatActivity {
         btnBusquedaPorCategoriaProducto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
-
                 bbdd.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -66,7 +69,7 @@ public class BusquedaPorCategoriaActivity extends AppCompatActivity {
                                 String sUsuario = oProducto.getUsuario();
                                 String categoria = oProducto.getCategoria();
 
-                                listado.add(new Producto(sNombre, sDescripcion, categoria, sPrecio, sUsuario));// Rellenamos el Objeto Producto
+                                listado.add(new Producto(sNombre, sDescripcion, categoria, sPrecio, sUsuario, ""));// Rellenamos el Objeto Producto
 
                             }
                             // Iteramos el ArrayList para mostrar la informacion de cada objeto

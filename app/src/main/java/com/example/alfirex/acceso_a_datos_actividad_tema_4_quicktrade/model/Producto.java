@@ -7,18 +7,24 @@ public class Producto {
     private String categoria;
     private String precio;
     private String usuario;
+    private String fav;
 
     public Producto() {
 
     }
 
-    public Producto(String nombre, String descripcion, String categoria, String precio, String usuario) {
+    public Producto(String nombre, String descripcion, String categoria, String precio, String usuario, String fav) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.precio = precio;
         this.usuario = usuario;
+        this.fav = fav;
     }
+
+
+
+
 
     public String getNombre() {
         return nombre;
@@ -58,6 +64,13 @@ public class Producto {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+    public String getFav() {
+        return fav;
+    }
+
+    public void setFav(String fav) {
+        this.fav = fav;
     }
 
     @Override

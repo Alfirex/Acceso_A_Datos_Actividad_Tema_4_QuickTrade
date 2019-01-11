@@ -99,7 +99,7 @@ public class addProductoActivity extends AppCompatActivity {
                 // Hacemos una comprobacion sobre el si los campos no estan vacios
                 if (!TextUtils.isEmpty(sNombre) ||  !TextUtils.isEmpty(sDescripcion) || !TextUtils.isEmpty(sCategoria)  || !TextUtils.isEmpty(sPrecio)){
                     // Creamos el Objeto Producto y Introducimos los valores de editText, ademas el usuario actual
-                    Producto oProducto = new Producto(sNombre,sDescripcion,sCategoria,sPrecio,idUsuario);
+                    Producto oProducto = new Producto(sNombre,sDescripcion,sCategoria,sPrecio,idUsuario, "false");
                     bbdd2 = FirebaseDatabase.getInstance().getReference(getString(R.string.nodo_producto));//Obtenemos el Nodo
 
                     String clave = bbdd2.push().getKey();//Generamos una clave para el Nodo

@@ -75,11 +75,36 @@
         android:layout_marginTop="5dp"
         android:layout_weight="1">
         <Button
-            android:id="@+id/btnBuscarProdUsser"
+        android:id="@+id/btnBuscarProdUsser"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="Buscar Producto"
+        android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnAddFavr"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Buscar Producto"
+            android:text="Añadir favorito"
             android:layout_weight="1"/>
+
+
+
+    </LinearLayout>
+    <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btnMostrarFav"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Mostrar Mis Favoritos"
+            android:layout_weight="1"/>
+
+
 
 
 

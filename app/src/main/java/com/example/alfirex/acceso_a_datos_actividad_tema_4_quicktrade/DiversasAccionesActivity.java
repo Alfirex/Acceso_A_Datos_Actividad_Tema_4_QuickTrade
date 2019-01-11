@@ -61,6 +61,21 @@ public class DiversasAccionesActivity extends AppCompatActivity {
                 startActivity(iActivityBusquedaUsuarioProducto);
             }
         });
+
+        final Button btnAddFav =  findViewById(R.id.btnAddFavr);
+        btnAddFav.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent iActivityBusquedaUsuarioProducto = new Intent(v.getContext(), FavoritoActivity.class);
+                startActivity(iActivityBusquedaUsuarioProducto);
+            }
+        });
+        final Button btnMostrarFav =  findViewById(R.id.btnMostrarFav);
+        btnMostrarFav.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent iActivityBusquedaUsuarioProducto = new Intent(v.getContext(), MostrarFavActivity.class);
+                startActivity(iActivityBusquedaUsuarioProducto);
+            }
+        });
     }
 
 

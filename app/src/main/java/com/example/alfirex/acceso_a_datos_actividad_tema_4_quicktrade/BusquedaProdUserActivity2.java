@@ -81,7 +81,7 @@ public class BusquedaProdUserActivity2 extends AppCompatActivity {
                             String sCategoria = oProducto.getCategoria();
 
 
-                            listado.add(new Producto(sNombre, sDescripcion, sCategoria, sPrecio, usuario)); // Añadimos el nuevo objeto de Producto al ArrayList
+                            listado.add(new Producto(sNombre, sDescripcion, sCategoria, sPrecio, usuario, "")); // Añadimos el nuevo objeto de Producto al ArrayList
 
                         }
                         // Iteramos el ArrayList para comparar dentro que elementos corresponden con lo que hemos insertado

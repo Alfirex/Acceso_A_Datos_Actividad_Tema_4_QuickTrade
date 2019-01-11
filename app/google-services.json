@@ -23,6 +23,22 @@
           }
         },
         {
+          "client_id": "786794107541-msd1uokhdrhqv5aeuvjvflcm0m5d9tv2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfirex.acceso_a_datos_actividad_tema_4_quicktrade",
+            "certificate_hash": "1cfbc2af23a1daeefb9ade9b32f0e3126eb28b1c"
+          }
+        },
+        {
+          "client_id": "786794107541-3u624ret0bgtjjujukfjmmp4mijklhns.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfirex.acceso_a_datos_actividad_tema_4_quicktrade",
+            "certificate_hash": "7035475ff9606e9cf789f3e30b6583f728260398"
+          }
+        },
+        {
           "client_id": "786794107541-624huv31i205f17ag2vciu0i6me8n2v7.apps.googleusercontent.com",
           "client_type": 3
         }
