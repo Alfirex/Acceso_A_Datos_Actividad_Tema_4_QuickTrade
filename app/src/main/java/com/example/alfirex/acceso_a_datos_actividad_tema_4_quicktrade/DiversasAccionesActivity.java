@@ -61,6 +61,14 @@ public class DiversasAccionesActivity extends AppCompatActivity {
                 startActivity(iActivityBusquedaUsuarioProducto);
             }
         });
+//      Ampliacion Tus categorias
+        final Button btnTusCategorias =  findViewById(R.id.btnTusCategorias);
+        btnTusCategorias.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent iActivityTusCategorias = new Intent(v.getContext(), TusCategoriasActivity.class);
+                startActivity(iActivityTusCategorias);
+            }
+        });
     }
 
 
