@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class MostrarFavActivity extends AppCompatActivity {
-    Spinner spin_group_user;
+
     DatabaseReference bbdd, bbdd2;
     private ArrayList<String> listado = new ArrayList<>();
     ListView lv;
@@ -65,9 +65,9 @@ public class MostrarFavActivity extends AppCompatActivity {
                     }
                 }
                 // Cogemos la referencia del Nodo de Firebase
-                bbdd = FirebaseDatabase.getInstance().getReference( getString(R.string.nodo_producto) );
+                bbdd2 = FirebaseDatabase.getInstance().getReference( getString(R.string.nodo_producto) );
 
-                bbdd.addValueEventListener(new ValueEventListener() {
+                bbdd2.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         // Recorremos todos  los Usuarios para despues almacenarlos en un ArrayList
@@ -83,10 +83,6 @@ public class MostrarFavActivity extends AppCompatActivity {
 
                                     listado.add(nombre);// Añadimos al ArrayList la usuario
                                 }
-
-
-
-
 
                             adaptador = new ArrayAdapter<>(MostrarFavActivity.this,android.R.layout.simple_list_item_1,listado);
                             lv.setAdapter(adaptador);
@@ -106,12 +102,6 @@ public class MostrarFavActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-
-
-
-
-
 
     }
 }
